@@ -58,8 +58,6 @@ bool Mario::TouchBowser()
 	sf::FloatRect fr = EntityManager::mPeach->mSprite.getGlobalBounds();
 	if (this->mSprite.getGlobalBounds().intersects(fr))
 	{
-		if (EntityManager::mPeach->mEnabled == true)
-			EntityManager::mPeach->mEnabled = false;
 		return true;
 	}
 	return false;
