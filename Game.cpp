@@ -125,7 +125,7 @@ void Game::update(sf::Time elapsedTime)
 		if (mEntityManager.mMario->mIsJumping)
 			mEntityManager.mMario->Jump(elapsedTime);
 
-		mEntityManager.mMario->TryToEatCoin();
+		mEntityManager.HandleCoinProximity();
 
 		if(mEntityManager.mMario->TouchBowser())
 		{
