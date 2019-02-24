@@ -2,6 +2,7 @@
 #include "pch.h"
 #include "EntityManager.h"
 
+using namespace std;
 
 shared_ptr<Mario> EntityManager::mMario;
 shared_ptr<Entity> EntityManager::mPeach;
@@ -37,7 +38,7 @@ void EntityManager::InitializeEntities()
 
 	shared_ptr<Mario> ptr = make_shared<Mario>(170.f, 470.f);
 	EntityManager::mMario = ptr;
-	shared_ptr<Entity> peach = make_shared<Entity>(600.f, 55.f, "Media/Textures/peach_.png");
+	shared_ptr<Entity> peach = make_shared<Entity>(600.f, 40.f, "Media/Textures/peach_.png");
 	EntityManager::mPeach = peach;
 	// Blocks
 	for (int i = 0; i < 8; i++)
