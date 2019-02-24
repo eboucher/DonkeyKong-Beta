@@ -31,7 +31,6 @@ private:
 	sf::Time	mStatisticsUpdateTime;
 	sf::Text	mEndGameText;
 	sf::Sprite	mPeach;
-	sf::Texture mPeachTexture;
 
 	size_t	mStatisticsNumFrames;
 
