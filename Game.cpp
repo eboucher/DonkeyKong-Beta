@@ -129,7 +129,7 @@ void Game::update(sf::Time elapsedTime)
 
 		if(mEntityManager.mMario->TouchBowser())
 		{
-			IsOver(0);
+			IsOver(1);
 		}
 
 	} 
