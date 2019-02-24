@@ -13,10 +13,11 @@ public:
 
 public:
 	bool HasEatenAllCoins();
+	bool TouchBowser();
 	bool GoDown(sf::Time elapsedTime);
-	void GoLeft(sf::Time elapsedTime) override; 
-	void GoRight(sf::Time elapsedTime) override; 
-	bool GoUp(sf::Time elapsedTime) override;
+	void GoLeft(sf::Time elapsedTime) ; 
+	void GoRight(sf::Time elapsedTime) ; 
+	bool GoUp(sf::Time elapsedTime) ;
 	void Jump(sf::Time elapsedTime);
 	void GravityHandle();
 

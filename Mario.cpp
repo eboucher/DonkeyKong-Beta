@@ -61,6 +61,20 @@ bool Mario::HasEatenAllCoins()
 	return false;
 }
 
+bool Mario::TouchBowser()
+{
+
+	sf::FloatRect fr = EntityManager::mPeach->mSprite.getGlobalBounds();
+	if (this->mSprite.getGlobalBounds().intersects(fr))
+	{
+		if (EntityManager::mPeach->mEnabled == true)
+			EntityManager::mPeach->mEnabled = false;
+		return true;
+	}
+	return false;
+}
+
+
 void Mario::GoLeft(sf::Time elapsedTime)
 {
 	if (cptFall == JUMPING_FRAMES) {
