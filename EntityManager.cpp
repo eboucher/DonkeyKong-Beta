@@ -38,7 +38,7 @@ void EntityManager::InitializeEntities()
 
 	shared_ptr<Mario> ptr = make_shared<Mario>(170.f, 470.f);
 	EntityManager::mMario = ptr;
-	shared_ptr<Entity> peach = make_shared<Entity>(600.f, 40.f, "Media/Textures/peach_.png");
+	shared_ptr<Entity> peach = make_shared<Entity>(600.f, 40.f, "Media/Textures/bowser.png");
 	EntityManager::mPeach = peach;
 	// Blocks
 	for (int i = 0; i < 8; i++)
@@ -48,12 +48,12 @@ void EntityManager::InitializeEntities()
 			EntityManager::mBlocks.push_back(se);
 		}
 
-	// Coins
+	// peach
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			shared_ptr<Coin> se = make_shared<Coin>(100.f + 130.f * (j + 1), 110.f * (i + 1) + 50.f);
+			shared_ptr<Coin> se = make_shared<Coin>(130.f + 130.f * (j + 1), 110.f * (i + 1) + 50.f);
 			if (!se->CollidesLadder(mLadders))
 				EntityManager::mCoins.push_back(se);
 		}

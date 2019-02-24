@@ -12,13 +12,13 @@ public:
 	Entity(float x, float y, string path);
 
 public:
-	virtual ~Entity() { };
+	~Entity() { };
 
 public:
-	virtual void GoRight(sf::Time elapsedTime);
-	virtual void GoLeft(sf::Time elapsedTime);
-	virtual bool GoUp(sf::Time elapsedTime);
-	virtual void UpdateTexture(string path);
+	void GoRight(sf::Time elapsedTime);
+	void GoLeft(sf::Time elapsedTime);
+	bool GoUp(sf::Time elapsedTime);
+	void UpdateTexture(string path);
 	bool GoDown(sf::Time elapsedTime);
 	bool IsOnLadder();		
 	bool IsAboveOrOnLadder();

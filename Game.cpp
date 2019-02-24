@@ -29,10 +29,6 @@ Game::Game()
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(20);
 
-	// Draw end game text
-	mEndGameText.setFont(mFont);
-	mEndGameText.setPosition(280.f, 10.f);
-	mEndGameText.setFillColor(sf::Color::Red);
 }
 
 void Game::run()
@@ -139,7 +135,7 @@ void Game::update(sf::Time elapsedTime)
 	} 
 	if (mEnterIsPressed) {
 
-			mEndGameText.setString("");
+			mGameOver.setString("");
 			mRunning = true;
 	}
 }
@@ -170,7 +166,7 @@ void Game::render()
 	mWindow.draw(mEntityManager.mPeach->mSprite);
 
 	mWindow.draw(mStatisticsText);
-	mWindow.draw(mEndGameText);
+	mWindow.draw(mGameOver);
 
 	mWindow.display();
 }
@@ -191,24 +187,20 @@ void Game::updateStatistics(sf::Time elapsedTime)
 		mStatisticsUpdateTime -= sf::seconds(1.0f);
 		mStatisticsNumFrames = 0;
 	}
-
-
-	if (mStatisticsUpdateTime >= sf::seconds(0.050f))
-	{
-
-	}
 }
 
 void Game::IsOver(int state)
 {
+	mGameOver.setFont(mFont);
+	mGameOver.setPosition(300.f, 300.f);
 	mRunning = false;
 	if (state == 0)
 	{
-		mEndGameText.setString("GAME OVER !\nRetry?");
+		mGameOver.setString("Oooooooooh Mamamia");
 	}
 	else
 	{
 		mEntityManager.IsWon = true;
-		mEndGameText.setString("YOU WON !\n");
+		mGameOver.setString("Sub Zero Win");
 	}
 }

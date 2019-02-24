@@ -29,7 +29,7 @@ private:
 	sf::Font	mFont;
 	sf::Text	mStatisticsText;
 	sf::Time	mStatisticsUpdateTime;
-	sf::Text	mEndGameText;
+	sf::Text	mGameOver;
 	sf::Sprite	mPeach;
 
 	size_t	mStatisticsNumFrames;

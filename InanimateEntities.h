@@ -9,7 +9,7 @@ class Block : public Entity
 public:
 	Block();
 	Block(float x, float y);
-	virtual ~Block();
+	~Block();
 
 };
 
