@@ -1,0 +1,9 @@
+﻿  DonkeyKong.cpp
+  Entity.cpp
+  EntityManager.cpp
+  Game.cpp
+  InanimateEntities.cpp
+  Mario.cpp
+  StringHelpers.cpp
+  Generating Code...
+  DonkeyKong.vcxproj -> C:\Users\asus\Documents\ESGI\C++\Donkey-Kong-1981\x64\Debug\DonkeyKong.exe
