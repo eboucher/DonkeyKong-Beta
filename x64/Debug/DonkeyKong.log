@@ -2,9 +2,16 @@
   Entity.cpp
   EntityManager.cpp
   Game.cpp
+<<<<<<< HEAD
 c:\users\asus\documents\esgi\c++\donkeykong-beta\game.cpp(184): error C2039: 'GetCoinsEaten': is not a member of 'EntityManager'
   c:\users\asus\documents\esgi\c++\donkeykong-beta\entitymanager.h(8): note: see declaration of 'EntityManager'
 c:\users\asus\documents\esgi\c++\donkeykong-beta\game.cpp(184): error C2672: 'toString': no matching overloaded function found
   InanimateEntities.cpp
   Mario.cpp
   Generating Code...
+=======
+  InanimateEntities.cpp
+  Mario.cpp
+  Génération de code en cours...
+  DonkeyKong.vcxproj -> C:\Users\bartholomé\Documents\projetESGI\DonkeyKong-Beta\x64\Debug\DonkeyKong.exe
+>>>>>>> master
