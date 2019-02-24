@@ -52,6 +52,20 @@ void Mario::GravityHandle() {
 	}
 }
 
+void Mario::TryToEatCoin()
+{
+	for (shared_ptr<Coin> entity : EntityManager::mCoins)
+	{
+		sf::FloatRect fr = entity->mSprite.getGlobalBounds();
+		if (this->mSprite.getGlobalBounds().intersects(fr))
+		{
+			if(entity->mEnabled == true)
+			entity->mEnabled = false;
+			break;
+		}
+	}
+}
+
 bool Mario::HasEatenAllCoins()
 {
 	if (EntityManager::GetCoinsEaten() == EntityManager::mCoins.size())
