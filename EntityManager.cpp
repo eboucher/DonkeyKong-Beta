@@ -2,7 +2,6 @@
 #include "pch.h"
 #include "EntityManager.h"
 
-using namespace std;
 
 shared_ptr<Mario> EntityManager::mMario;
 shared_ptr<Entity> EntityManager::mPeach;
@@ -38,31 +37,16 @@ void EntityManager::InitializeEntities()
 
 	shared_ptr<Mario> ptr = make_shared<Mario>(170.f, 470.f);
 	EntityManager::mMario = ptr;
-	shared_ptr<Entity> peach = make_shared<Entity>(600.f, 55.f, "Media/Textures/peach.png");
+	shared_ptr<Entity> peach = make_shared<Entity>(600.f, 55.f, "Media/Textures/peach_.png");
 	EntityManager::mPeach = peach;
 	// Blocks
 	for (int i = 0; i < 8; i++)
 		for (int j = 0; j < 5; j++)
 		{
-			if (!(j == 3 && (i == 3 || i == 4)))
-			{
-				shared_ptr<Block> se = make_shared<Block>(100.f + 70.f * (i + 1.f), 110.f * (j + 1.f));
-				EntityManager::mBlocks.push_back(se);
-			} 
+			shared_ptr<Block> se = make_shared<Block>(100.f + 70.f * (i + 1), 110.f * (j + 1));
+			EntityManager::mBlocks.push_back(se);
 		}
 
-	
-	// Ladders
-	pair<float, float> laddersPositions[5]{ make_pair(540.f, 473.f), 
-											make_pair(680.f, 363.f), 
-											make_pair(280.f, 363.f), 
-											make_pair(540.f, 253.f), 
-											make_pair(280.f, 143.f) };
-	for (const pair<float, float> ladderPosition : laddersPositions)
-	{
-		shared_ptr<Ladder> ladder = make_shared<Ladder>(ladderPosition.first, ladderPosition.second);
-		EntityManager::mLadders.push_back(ladder);
-	}
 	// Coins
 	for (int i = 0; i < 4; i++)
 	{
@@ -73,4 +57,12 @@ void EntityManager::InitializeEntities()
 				EntityManager::mCoins.push_back(se);
 		}
 	}
-}	
+
+	// Ladders
+	for (int i = 0; i < 4; i++)
+	{
+
+		shared_ptr<Ladder> ladder = make_shared<Ladder>(170.f * (i + 1), 0.f + 110.f * (i + 1) + 33);
+		EntityManager::mLadders.push_back(ladder);
+	}
+}
