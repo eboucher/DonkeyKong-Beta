@@ -1,8 +1,5 @@
-﻿  DonkeyKong.cpp
-  Entity.cpp
-  EntityManager.cpp
-  Game.cpp
-  InanimateEntities.cpp
-  Mario.cpp
-  Generating Code...
-  DonkeyKong.vcxproj -> C:\Users\asus\Documents\ESGI\C++\DonkeyKong-Beta\x64\Debug\DonkeyKong.exe
+﻿  Game.cpp
+c:\users\bartholomé\documents\projetesgi\donkeykong-beta\game.cpp(1): fatal error C1853: Le fichier d'en-tête précompilé 'x64\Debug\DonkeyKong.pch' est issu d'une version antérieure du compilateur, ou l'en-tête précompilé est en C++ et vous l'utilisez en C (ou inversement)
+  StringHelpers.cpp
+c:\users\bartholomé\documents\projetesgi\donkeykong-beta\stringhelpers.cpp(1): fatal error C1853: Le fichier d'en-tête précompilé 'x64\Debug\DonkeyKong.pch' est issu d'une version antérieure du compilateur, ou l'en-tête précompilé est en C++ et vous l'utilisez en C (ou inversement)
+  Génération de code en cours...
