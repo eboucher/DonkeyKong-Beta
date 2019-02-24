@@ -53,7 +53,7 @@ void Game::run()
 		if (mRunning) {
 			shared_ptr<Mario> mario = mEntityManager.mMario;
 
-			if (mario->HasEatenAllCoins())
+			if (mEntityManager.NoMoreCoinsLeft())
 			{
 				this->IsOver(1);
 			}
@@ -181,7 +181,7 @@ void Game::updateStatistics(sf::Time elapsedTime)
 		mStatisticsText.setString(
 			"Frames / Second = " + toString(mStatisticsNumFrames) + "\n" +
 			"Time / Update = " + toString(mStatisticsUpdateTime.asMicroseconds() / mStatisticsNumFrames) + "us\n" +
-			toString(mEntityManager.GetCoinsEaten()) + "/" + toString(mEntityManager.mCoins.size()) + " coins"
+			toString(mEntityManager.EatenCoins()) + "/" + toString(mEntityManager.mCoins.size()) + " coins"
 		);
 
 		mStatisticsUpdateTime -= sf::seconds(1.0f);

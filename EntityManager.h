@@ -12,7 +12,6 @@ public:
 	virtual ~EntityManager();
 
 public:
-	static int GetCoinsEaten();
 
 public:
 	bool IsWon = false;
@@ -26,6 +25,8 @@ private:
 	static void InitializeEntities();
 
 public:
+	static int EatenCoins();
+	bool NoMoreCoinsLeft();
 	void HandleCoinProximity();
 };
 

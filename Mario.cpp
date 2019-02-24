@@ -52,15 +52,6 @@ void Mario::GravityHandle() {
 	}
 }
 
-bool Mario::HasEatenAllCoins()
-{
-	if (EntityManager::GetCoinsEaten() == EntityManager::mCoins.size())
-	{
-		return true;
-	}
-	return false;
-}
-
 bool Mario::TouchBowser()
 {
 

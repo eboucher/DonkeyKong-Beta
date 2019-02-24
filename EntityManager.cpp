@@ -20,7 +20,7 @@ EntityManager::~EntityManager()
 {
 }
 
-int EntityManager::GetCoinsEaten()
+int EntityManager::EatenCoins()
 {
 	int coins = 0;
 	for (shared_ptr<Entity> entity : mCoins)
@@ -31,6 +31,15 @@ int EntityManager::GetCoinsEaten()
 		}
 	}
 	return coins;
+}
+
+bool EntityManager::NoMoreCoinsLeft()
+{
+	if (EntityManager::EatenCoins() == EntityManager::mCoins.size())
+	{
+		return true;
+	}
+	return false;
 }
 
 void EntityManager::InitializeEntities()
