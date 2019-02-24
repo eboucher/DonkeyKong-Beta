@@ -12,7 +12,6 @@ public:
 	
 
 public:
-	void TryToEatCoin();
 	bool HasEatenAllCoins();
 	bool GoDown(sf::Time elapsedTime);
 	void GoLeft(sf::Time elapsedTime) override; 
