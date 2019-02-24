@@ -131,6 +131,11 @@ void Game::update(sf::Time elapsedTime)
 
 		mEntityManager.mMario->TryToEatCoin();
 
+		if(mEntityManager.mMario->TouchBowser())
+		{
+			IsOver(0);
+		}
+
 	} 
 	if (mEnterIsPressed) {
 
