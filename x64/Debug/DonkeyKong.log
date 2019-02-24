@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+﻿  pch.cpp
+  DonkeyKong.cpp
+  Entity.cpp
+  Game.cpp
+  EntityManager.cpp
+  InanimateEntities.cpp
+  Mario.cpp
+  StringHelpers.cpp
+  Generating Code...
+  DonkeyKong.vcxproj -> C:\Users\asus\Documents\ESGI\C++\DonkeyKong-Beta\x64\Debug\DonkeyKong.exe
+=======
 ﻿  DonkeyKong.cpp
   Entity.cpp
   EntityManager.cpp
@@ -6,3 +18,4 @@
   Mario.cpp
   Génération de code en cours...
   DonkeyKong.vcxproj -> C:\Users\bartholomé\Documents\projetESGI\DonkeyKong-Beta\x64\Debug\DonkeyKong.exe
+>>>>>>> master

@@ -67,3 +67,17 @@ void EntityManager::InitializeEntities()
 		EntityManager::mLadders.push_back(ladder);
 	}
 }
+
+void EntityManager::HandleCoinProximity()
+{
+	for (shared_ptr<Coin> entity : EntityManager::mCoins)
+	{
+		sf::FloatRect fr = entity->mSprite.getGlobalBounds();
+		if (EntityManager::mMario->mSprite.getGlobalBounds().intersects(fr))
+		{
+			if (entity->mEnabled == true)
+				entity->mEnabled = false;
+			break;
+		}
+	}
+}

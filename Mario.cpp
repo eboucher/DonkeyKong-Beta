@@ -52,33 +52,6 @@ void Mario::GravityHandle() {
 	}
 }
 
-void Mario::TryToEatCoin()
-{
-	for (shared_ptr<Coin> entity : EntityManager::mCoins)
-	{
-		sf::FloatRect fr = entity->mSprite.getGlobalBounds();
-		if (this->mSprite.getGlobalBounds().intersects(fr))
-		{
-			if(entity->mEnabled == true)
-			entity->mEnabled = false;
-			break;
-		}
-	}
-}
-
-bool Mario::TouchBowser()
-{
-
-		sf::FloatRect fr = EntityManager::mPeach->mSprite.getGlobalBounds();
-		if (this->mSprite.getGlobalBounds().intersects(fr))
-		{
-			if (EntityManager::mPeach->mEnabled == true)
-				EntityManager::mPeach->mEnabled = false;
-			return true;
-		}
-		return false;
-}
-
 bool Mario::HasEatenAllCoins()
 {
 	if (EntityManager::GetCoinsEaten() == EntityManager::mCoins.size())

@@ -24,5 +24,8 @@ public:
 
 private:
 	static void InitializeEntities();
+
+public:
+	void HandleCoinProximity();
 };
 
