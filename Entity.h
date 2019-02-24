@@ -9,7 +9,7 @@ protected:
 	Entity();
 	Entity(float x, float y);
 public:
-	Entity(float x, float y, string pathToPNG);
+	Entity(float x, float y, string path);
 
 public:
 	virtual ~Entity() { };

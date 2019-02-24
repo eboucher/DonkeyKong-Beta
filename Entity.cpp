@@ -10,9 +10,9 @@ Entity::Entity(float x, float y)
 {
 }
 
-Entity::Entity(float x, float y, string pathToPNG)
+Entity::Entity(float x, float y, string texturePath)
 {
-	mTexture.loadFromFile(pathToPNG);
+	mTexture.loadFromFile(texturePath);
 	mSprite.setTexture(mTexture);
 	mSprite.setPosition(x, y);
 }

@@ -54,8 +54,8 @@ void Game::run()
 		updateStatistics(elapsedTime);
 		render();
 
-		if (mGameState != GameState::End) {
-			std::shared_ptr<Mario> mario = mEntityManager.mMario;
+		if (mRunning) {
+			shared_ptr<Mario> mario = mEntityManager.mMario;
 
 			if (mario->HasEatenAllCoins())
 			{
@@ -113,13 +113,10 @@ void Game::handleMarioInput(sf::Keyboard::Key key, bool isPressed)
 
 void Game::update(sf::Time elapsedTime)
 {
-	switch(mGameState)
-	{
-
-	case GameState::Running:
+	if (mRunning) {
 		if (mIsMovingUp)
 			mEntityManager.mMario->GoUp(elapsedTime);
-		
+
 		if (mIsMovingDown)
 			mEntityManager.mMario->GoDown(elapsedTime);
 
@@ -134,18 +131,11 @@ void Game::update(sf::Time elapsedTime)
 
 		mEntityManager.mMario->TryToEatCoin();
 
-		break;
-
-	case GameState::End:
-
-		if (mEnterIsPressed)
-		{
+	} 
+	if (mEnterIsPressed) {
 
 			mEndGameText.setString("");
-			mGameState = GameState::Running;
-		}
-
-		break;
+			mRunning = true;
 	}
 }
 
@@ -153,7 +143,7 @@ void Game::render()
 {
 	mWindow.clear();
 
-	for (std::shared_ptr<Entity> entity : mEntityManager.mBlocks)
+	for (shared_ptr<Entity> entity : mEntityManager.mBlocks)
 	{
 		if (entity->mEnabled)
 			mWindow.draw(entity->mSprite);
@@ -206,7 +196,7 @@ void Game::updateStatistics(sf::Time elapsedTime)
 
 void Game::IsOver(int state)
 {
-	mGameState = GameState::End;
+	mRunning = false;
 	if (state == 0)
 	{
 		mEndGameText.setString("GAME OVER !\nRetry?");

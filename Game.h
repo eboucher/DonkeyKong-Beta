@@ -4,12 +4,6 @@
 #define COIN_SPACE 100.f
 #include "EntityManager.h"
 
-enum GameState
-{
-	Running,
-	End
-};
-
 class Game
 {
 public:
@@ -28,7 +22,7 @@ private:
 
 private:
 	static const sf::Time	TimePerFrame;
-	GameState		mGameState = GameState::Running;
+	bool mRunning = true;
 	EntityManager	mEntityManager;
 
 	sf::RenderWindow		mWindow;
