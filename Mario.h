@@ -26,7 +26,7 @@ public:
 	int cptFall = 10;
 	int cptFly = 0;
 
-protected:
+private:
 	string mRightTexturePath = "Media/Textures/mario_right.png";
 	string mleftTexturePath = "Media/Textures/mario_left.png";
 	string mUpTexturePath = "Media/Textures/mario_back.png";

@@ -1,7 +1,5 @@
 #pragma once
 
-#define BLOCK_SPACE 110.f
-#define COIN_SPACE 100.f
 #include "EntityManager.h"
 
 class Game
@@ -18,11 +16,10 @@ private:
 
 	void updateStatistics(sf::Time elapsedTime);
 	void handleMarioInput(sf::Keyboard::Key key, bool isPressed);
-	void IsOver(int state);
+	void Over(int state);
 
 private:
 	static const sf::Time	TimePerFrame;
-	bool mRunning = true;
 	EntityManager	mEntityManager;
 
 	sf::RenderWindow		mWindow;
@@ -34,9 +31,9 @@ private:
 
 	size_t	mStatisticsNumFrames;
 
-	bool mIsMovingUp;
-	bool mIsMovingDown;
+	bool mIsMovingUpOnLadder;
+	bool mIsMovingDownOnLadder;
 	bool mIsMovingRight;
+	bool mIsJumping;
 	bool mIsMovingLeft;
-	bool mEnterIsPressed;
 };

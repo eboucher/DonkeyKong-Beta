@@ -15,9 +15,10 @@ Game::Game()
 	, mStatisticsText()
 	, mStatisticsUpdateTime()
 	, mStatisticsNumFrames(0)
-	, mIsMovingUp(false)
-	, mIsMovingDown(false)
+	, mIsMovingUpOnLadder(false)
+	, mIsMovingDownOnLadder(false)
 	, mIsMovingRight(false)
+	, mIsJumping(false)
 	, mIsMovingLeft(false)
 {
 	mWindow.setFramerateLimit(60);
@@ -50,22 +51,20 @@ void Game::run()
 		updateStatistics(elapsedTime);
 		render();
 
-		if (mRunning) {
 			shared_ptr<Mario> mario = mEntityManager.mMario;
 
 			if (mEntityManager.NoMoreCoinsLeft())
 			{
-				this->IsOver(1);
+				this->Over(1);
 			}
-			if ((mario->OnVoid() && !mario->mIsJumping && mario->cptFly == 0) || (mario->IsOnLadder() && !mario->mIsJumping && mario->cptFall != 10))
+			if ((mario->OnVoid() && !mario->mIsJumping && mario->cptFly == 0)) {
 				mario->GoDown(sf::microseconds(10000));
+			}			
 			if (mario->IsOutsideOfWindow())
-				IsOver(0);
+				Over(0);
 			mario->GravityHandle();
-		}
 	}
 }
-
 void Game::processEvents()
 {
 	sf::Event event;
@@ -91,29 +90,24 @@ void Game::processEvents()
 void Game::handleMarioInput(sf::Keyboard::Key key, bool isPressed)
 {
 	if (key == sf::Keyboard::Up)
-		mIsMovingUp = isPressed;
+		mIsMovingUpOnLadder = isPressed;
 	else if (key == sf::Keyboard::Down)
-		mIsMovingDown = isPressed;
+		mIsMovingDownOnLadder = isPressed;
 	else if (key == sf::Keyboard::Left)
 		mIsMovingLeft = isPressed;
 	else if (key == sf::Keyboard::Right)
 		mIsMovingRight = isPressed;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mEntityManager.mMario->cptFall == 10) {
-		mWindow.setKeyRepeatEnabled(false);
-		if(mEntityManager.mMario->cptFall == 10)
-			mEntityManager.mMario->mIsJumping = true;
+	if (key == sf::Keyboard::Space) {
+		mIsJumping = isPressed;
 	}
-	else if (key == sf::Keyboard::Return)
-		mEnterIsPressed = isPressed;
 }
 
 void Game::update(sf::Time elapsedTime)
 {
-	if (mRunning) {
-		if (mIsMovingUp)
+		if (mIsMovingUpOnLadder)
 			mEntityManager.mMario->GoUp(elapsedTime);
 
-		if (mIsMovingDown)
+		if (mIsMovingDownOnLadder)
 			mEntityManager.mMario->GoDown(elapsedTime);
 
 		if (mIsMovingLeft)
@@ -122,22 +116,15 @@ void Game::update(sf::Time elapsedTime)
 		if (mIsMovingRight)
 			mEntityManager.mMario->GoRight(elapsedTime);
 
-		if (mEntityManager.mMario->mIsJumping)
+		if (mIsJumping)
 			mEntityManager.mMario->Jump(elapsedTime);
 
 		mEntityManager.HandleCoinProximity();
 
 		if(mEntityManager.mMario->TouchBowser())
 		{
-			IsOver(1);
+			Over(1);
 		}
-
-	} 
-	if (mEnterIsPressed) {
-
-			mGameOver.setString("");
-			mRunning = true;
-	}
 }
 
 void Game::render()
@@ -181,7 +168,7 @@ void Game::updateStatistics(sf::Time elapsedTime)
 		mStatisticsText.setString(
 			"Frames / Second = " + toString(mStatisticsNumFrames) + "\n" +
 			"Time / Update = " + toString(mStatisticsUpdateTime.asMicroseconds() / mStatisticsNumFrames) + "us\n" +
-			toString(mEntityManager.EatenCoins()) + "/" + toString(mEntityManager.mCoins.size()) + " coins"
+			toString(mEntityManager.EatenCoins()) + "/" + toString(mEntityManager.mCoins.size()) + " peachs"
 		);
 
 		mStatisticsUpdateTime -= sf::seconds(1.0f);
@@ -189,18 +176,17 @@ void Game::updateStatistics(sf::Time elapsedTime)
 	}
 }
 
-void Game::IsOver(int state)
+void Game::Over(int state)
 {
 	mGameOver.setFont(mFont);
 	mGameOver.setPosition(300.f, 300.f);
-	mRunning = false;
 	if (state == 0)
 	{
-		mGameOver.setString("Game over!");
+		mGameOver.setString("OOOOOOOOOOOh Mamamia !");
 	}
 	else
 	{
 		mEntityManager.IsWon = true;
-		mGameOver.setString("You win!");
+		mGameOver.setString("Sub Zero Win !");
 	}
 }
