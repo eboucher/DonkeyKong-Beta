@@ -7,17 +7,16 @@ using namespace std;
 class Mario : public Entity
 {
 public:
-	Mario(float x, float y);
+	Mario(sf::Vector2f position);
 	virtual ~Mario();
 	
 
 public:
-	bool HasEatenAllCoins();
 	bool TouchBowser();
 	bool GoDown(sf::Time elapsedTime);
-	void GoLeft(sf::Time elapsedTime) ; 
-	void GoRight(sf::Time elapsedTime) ; 
-	bool GoUp(sf::Time elapsedTime) ;
+	void GoLeft(sf::Time elapsedTime); 
+	void GoRight(sf::Time elapsedTime); 
+	bool GoUp(sf::Time elapsedTime);
 	void Jump(sf::Time elapsedTime);
 	void GravityHandle();
 

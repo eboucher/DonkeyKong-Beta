@@ -7,9 +7,9 @@ class Entity
 
 protected:
 	Entity();
-	Entity(float x, float y);
+	Entity(sf::Vector2f position);
 public:
-	Entity(float x, float y, string path);
+	Entity(sf::Vector2f position, string texturePath);
 
 public:
 	~Entity() { };
@@ -31,10 +31,9 @@ public:
 	sf::Sprite mSprite;
 	bool mEnabled = true;
 	int mTimes = 0;
+	float m_speed;
 
 protected:
 	sf::Texture mTexture;
-
-public:
-	float	m_speed;
+	
 };

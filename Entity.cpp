@@ -6,15 +6,15 @@ Entity::Entity()
 {
 }
 
-Entity::Entity(float x, float y)
+Entity::Entity(sf::Vector2f position)
 {
 }
 
-Entity::Entity(float x, float y, string texturePath)
+Entity::Entity(sf::Vector2f position, string texturePath)
 {
-	mTexture.loadFromFile(texturePath);
+	mSprite.setPosition(position);
 	mSprite.setTexture(mTexture);
-	mSprite.setPosition(x, y);
+	mTexture.loadFromFile(texturePath);
 }
 
 
@@ -66,17 +66,18 @@ bool Entity::GoDown(sf::Time elapsedTime)
 
 bool Entity::IsOnLadder()
 {
-	for (shared_ptr<Entity> entity : EntityManager::mLadders)
+	for (shared_ptr<Entity> ladder : EntityManager::mLadders)
 	{
-		sf::FloatRect fr = entity->mSprite.getGlobalBounds();
+		sf::FloatRect ladderBounds = ladder->mSprite.getGlobalBounds();
 		// we add the height of the block texture so our entity can hike on it
-		fr.top -= 33;
-		fr.height += 33;
+		ladderBounds.top -= 33;
+		ladderBounds.height += 33;
 		// we adjust the weight of the block so entities cannot go up if they intersect with only 1 pixel
-		fr.left += 13;
-		fr.width -= 20;
+		ladderBounds.left += 13;
+		ladderBounds.width -= 20;
 
-		if (this->mSprite.getGlobalBounds().intersects(fr))
+		sf::FloatRect entityBounds = this->mSprite.getGlobalBounds();
+		if (entityBounds.intersects(ladderBounds))
 		{
 			return true;
 		}
@@ -88,10 +89,12 @@ bool Entity::IsAboveOrOnLadder()
 {
 	for (shared_ptr<Entity> entity : EntityManager::mLadders)
 	{
-		sf::FloatRect fr = entity->mSprite.getGlobalBounds();
-		fr.top -= this->mSprite.getTexture()->getSize().y + 10;
-		fr.height += 13;
-		if (this->mSprite.getGlobalBounds().intersects(fr))
+		sf::FloatRect ladderBounds = entity->mSprite.getGlobalBounds();
+		sf::FloatRect entityBounds = this->mSprite.getGlobalBounds();
+		ladderBounds.top -= this->mSprite.getTexture()->getSize().y + 10;
+		ladderBounds.height += 13;
+
+		if (entityBounds.intersects(ladderBounds))
 		{
 			return true;
 		}
@@ -100,9 +103,11 @@ bool Entity::IsAboveOrOnLadder()
 }
 
 bool Entity::CollidesBlock() {
-	for (shared_ptr<Entity> entity : EntityManager::mBlocks)
+	for (shared_ptr<Entity> block : EntityManager::mBlocks)
 	{
-		if (this->mSprite.getGlobalBounds().intersects(entity->mSprite.getGlobalBounds()))
+		sf::FloatRect entityBounds = this->mSprite.getGlobalBounds();
+		sf::FloatRect blockBounds = block->mSprite.getGlobalBounds();
+		if (entityBounds.intersects(blockBounds))
 		{
 			return true;
 		}
@@ -113,13 +118,13 @@ bool Entity::CollidesBlock() {
 bool Entity::OnVoid()
 {
 	bool OnEdge = true;
-	for (shared_ptr<Entity> entity : EntityManager::mBlocks)
+	for (shared_ptr<Entity> block : EntityManager::mBlocks)
 	{
-		sf::FloatRect fr = entity->mSprite.getGlobalBounds();
-		fr.top -= 5;
-		fr.left += 5;
-		fr.width -= 10;
-		if (mSprite.getGlobalBounds().intersects(fr))
+		sf::FloatRect blockBounds = block->mSprite.getGlobalBounds();
+		blockBounds.top -= 5;
+		blockBounds.left += 5;
+		blockBounds.width -= 10;
+		if (mSprite.getGlobalBounds().intersects(blockBounds))
 			OnEdge = false;
 	}
 	return !IsOnLadder() && OnEdge;

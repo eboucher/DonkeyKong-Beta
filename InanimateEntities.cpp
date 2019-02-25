@@ -2,15 +2,16 @@
 #include "InanimateEntities.h"
 #include "EntityManager.h"
 
+/********* Block *********************************************/
 Block::Block()
 {
 }
 
-Block::Block(float x, float y) : Entity(x, y)
+Block::Block(sf::Vector2f position) : Entity(position)
 {
 	mTexture.loadFromFile("Media/Textures/Block.png");
 	mSprite.setTexture(mTexture);
-	mSprite.setPosition(x, y);
+	mSprite.setPosition(position);
 }
 
 
@@ -18,15 +19,18 @@ Block::~Block()
 {
 }
 
+/************************************************************/
 
+
+/********* Ladder *******************************************/
 Ladder::Ladder()
 {
 }
 
-Ladder::Ladder(float x, float y) : Entity(x, y)
+Ladder::Ladder(sf::Vector2f position) : Entity(position)
 {
 	UpdateTexture("Media/Textures/Echelle.png");
-	mSprite.setPosition(x, y);
+	mSprite.setPosition(position);
 }
 
 
@@ -34,15 +38,18 @@ Ladder::~Ladder()
 {
 }
 
+/************************************************************/
+
+/********** Coin ********************************************/
 
 Coin::Coin()
 {
 }
 
-Coin::Coin(float x, float y) : Entity(x, y)
+Coin::Coin(sf::Vector2f position) : Entity(position)
 {
 	UpdateTexture("Media/Textures/coin.png");
-	mSprite.setPosition(x, y);
+	mSprite.setPosition(position);
 }
 
 
@@ -64,3 +71,5 @@ bool Coin::CollidesLadder(vector<shared_ptr<Ladder>> mLadders)
 	}
 	return false;
 }
+
+/************************************************************/

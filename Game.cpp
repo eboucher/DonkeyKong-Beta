@@ -196,11 +196,11 @@ void Game::IsOver(int state)
 	mRunning = false;
 	if (state == 0)
 	{
-		mGameOver.setString("Oooooooooh Mamamia");
+		mGameOver.setString("Game over!");
 	}
 	else
 	{
 		mEntityManager.IsWon = true;
-		mGameOver.setString("Sub Zero Win");
+		mGameOver.setString("You win!");
 	}
 }

@@ -5,12 +5,12 @@
 const int JUMPING_FRAMES = 10;
 const int FLYING_FRAMES = 15;
 
-Mario::Mario(float x, float y) : Entity(x, y)
+Mario::Mario(sf::Vector2f position) : Entity(position)
 {
 	m_speed = 150.f;
 
 	UpdateTexture("Media/Textures/mario_right.png");
-	mSprite.setPosition(x, y);
+	mSprite.setPosition(position);
 }
 
 Mario::~Mario()

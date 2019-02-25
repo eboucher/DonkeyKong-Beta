@@ -8,7 +8,7 @@ class Block : public Entity
 {
 public:
 	Block();
-	Block(float x, float y);
+	Block(sf::Vector2f position);
 	~Block();
 
 };
@@ -17,7 +17,7 @@ class Ladder : public Entity
 {
 public:
 	Ladder();
-	Ladder(float x, float y);
+	Ladder(sf::Vector2f position);
 	~Ladder();
 
 
@@ -27,7 +27,7 @@ class Coin : public Entity
 {
 public:
 	Coin();
-	Coin(float x, float y);
+	Coin(sf::Vector2f position);
 	~Coin();
 
 public:
